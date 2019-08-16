@@ -31,7 +31,7 @@ myspack-create-git-repository () {
 	git remote update && \
 	git status -uno || \
 	git clone $spackurl $spackroot
-    ) | sed 's/^/    /' 
+    ) | sed 's/^/    /'
 }
 
 myspack-configure () {
@@ -46,9 +46,21 @@ myspack-configure () {
             spack-instance-1:
                 install_tree: $upstreamtree
         "
-    cat $upstreamroot/etc/spack/repos.yaml \
-	<(echo "  - $(dirname $spackroot)/repo)") \
-	> $spackroot/etc/spack/repos.yaml
+    echo > $(dirname $spackroot)/repos/myspack/repo.yaml "
+        repo:
+            namespace: myspack
+        "
+    echo > $spackroot/etc/spack/repos.yaml "
+        repos:
+            - $(dirname $spackroot)/repos/myspack
+            - $(dirname $spackroot)/repos/csc
+            - \$spack/var/spack/repos/builtin
+        "
+    mkdir -p $(dirname $spackroot)/repos/csc/packages
+    ln -sf $(dirname $upstreamroot)/csc-repo/repo.yaml \
+	$(dirname $spackroot)/repos/csc/
+    ln -sf $(dirname $upstreamroot)/csc-repo/packages/{hpcx-mpi,netcdf} \
+	$(dirname $spackroot)/repos/csc/packages/
     ln -sf \
 	$upstreamroot/etc/spack/{compilers,packages}.yaml \
 	$spackroot/etc/spack
