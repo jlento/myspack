@@ -1,24 +1,33 @@
 # myspack
 
-Use cases for user-space Spack chained to system Spack.
+Use cases and an example setup for user-space Spack chained to system
+Spack.
 
 System administrators work hard to make spack system software installs
-robust, and hard to mess up --- for a good reason. This setup has the
-opposite goal, to allow trying out spack and messing with it
-easy. Read the disclaimer :)
+robust, and hard to mess up --- for obvious reasons. This setup has a
+different goal, to allow trying out spack and messing with it easy,
+within user-space, but compatible enough with the system spack to be
+useful. Read the disclaimer!
+
+Possible uses of this kind of setup include
+
+- convenient environmant for developing spack packages
+
+- installing user/project scope packages that can benefit from already
+  installed system package dependencies
 
 
 ## Disclaimer
 
-Please, do NOT run any of this stuff with admin priviledges, in the
-machines with the write mounted system software root, with your other
+Please, do NOT run any of this stuff with admin priviledges, in
+machines with write mounted system software root, with your other
 admin account, etc, and you should be safe --- or rather, everybody
 else should be safe :)
 
 All files touched should be under this directory, only.
 
 Out of the box, this should only work in puhti.csc.fi. Setup in other
-machines likely needs adaptation.
+machines will need adaptation.
 
 
 ## Setup
@@ -36,12 +45,13 @@ $ source myspack.sh
 
 ## Open issues
 
-### Issue 1, with slightly ugly, hopefully temporal "fix"
+### Issue 1, with hopefully temporal "fix"
 
 There are some changes between the development branch, used in
 myspack, and the stable spack version installed system wide. Some of
-the packages, such as `openmpi` in `/appl/spack/csc-repo`, are
-incompatible, and running `spack spec ...` throws error
+the packages are incompatible between the two. For example, running
+`spack spec openmpi` for `openmpi` in `/appl/spack/csc-repo`, throws
+error
 
 ```console
 Error: either a default was not explicitly set, or 'None' was used [mvapich2,
