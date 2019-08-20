@@ -11,7 +11,7 @@ useful. Read the disclaimer!
 
 Possible uses of this kind of setup include
 
-- convenient environmant for developing spack packages
+- convenient environment for developing spack packages
 
 - installing user/project scope packages that can benefit from already
   installed system package dependencies
