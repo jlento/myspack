@@ -31,8 +31,7 @@ $ source myspack.sh
 
 ## Use cases/demos
 
-1. [Building an existing system Spack package with a different
-compiler](demos/demo-1.md)
+1. [Using a different compiler to build an existing system Spack package](demos/demo-1.md)
 
 
 ## Open issues
