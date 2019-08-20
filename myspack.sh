@@ -61,7 +61,9 @@ myspack-configure () {
 	$(dirname $spackroot)/repos/csc/
     ln -sf $(dirname $upstreamroot)/csc-repo/packages/{hpcx-mpi,netcdf} \
 	$(dirname $spackroot)/repos/csc/packages/
+    sed -e '/^    permissions:/,+2d' $upstreamroot/etc/spack/packages.yaml \
+	> $spackroot/etc/spack/packages.yaml
     ln -sf \
-	$upstreamroot/etc/spack/{compilers,packages}.yaml \
+	$upstreamroot/etc/spack/{compilers}.yaml \
 	$spackroot/etc/spack
 }
