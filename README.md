@@ -28,6 +28,11 @@ All files touched should be under this directory, only.
 Out of the box, this should only work in puhti.csc.fi. Setup in other
 machines will need adaptation.
 
+You should be familiar with [the Spack
+documentation](https://spack.readthedocs.io/en/latest/index.html#),
+and chapter [Chaining Spack
+Installations](https://spack.readthedocs.io/en/latest/chain.html),
+especially.
 
 ## Setup
 
