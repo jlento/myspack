@@ -213,9 +213,9 @@ compiler is given a compile option `-ffree-line-lenght-none`,
 that should be given to GCC compiler, only. That should be easy to fix!
 
 We can override the package.py build recipe from the builtin package
-repository `spack/var/spack/repos/builtin/` by creating the same named
-package in the repository `repos/myspack/`, which is
-listed before in the repository list `spack/etc/spack/repos.yaml`.
+repository `spack/var/spack/repos/builtin/` by creating a package with
+the same name in the repository `repos/myspack/`, which has precedence
+the repository list `spack/etc/spack/repos.yaml`.
 
 Let's just copy the package (dirctory) and make the required
 modification to `package.py`. The final diff
@@ -229,7 +229,7 @@ $ diff spack/var/spack/repos/builtin/packages/libemos/package.py repos/myspack/p
 >             args.append('-DCMAKE_Fortran_FLAGS=-ffree-line-length-none')
 ```
 
-shows the simple guard that checks which compiler is in use.
+shows the added simple guard that checks which compiler is in use.
 
 Now the package builds with Intel compiler too, and we have
 `libemos@4.5.1 %intel@19.0.4`! Next, the fix should be pushed upstream
